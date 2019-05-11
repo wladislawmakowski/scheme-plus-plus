@@ -1,6 +1,6 @@
 (define-obj <name> <class> <params>)
 ((<obj> <method-name>) <args>)
-(define-class (<name> <mother>) <body-list>)
+(define-class (<name> <mother>) . body)              // (define (<name> <mother>) <body>)
 (call <obj> <field/method>)
 (method (<name> <args>) <body>)
 (field <name> <value>)
