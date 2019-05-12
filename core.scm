@@ -1,7 +1,7 @@
 (define (spp)
   ())
 
-(define (eval exp env)
+(define (eval:: exp env)
   (cond ((self-eval? exp)
          exp)
         ((variable? exp)
@@ -27,7 +27,7 @@
                 (eval (list-of-values (operands exp) env) env)))
         (else (printf "UNKNOWN EXPRESSION TYPE: "~a"" exp))))
 
-(define (apply proc args)
+(define (apply:: proc args)
   (cond ((primitive? proc) 
          (apply-primitive proc args))
         ((compound? proc) 
