@@ -1,0 +1,8 @@
+(switch:: <arg> 
+    (case:: <val> <body>)
+    (case:: <val> <body>)
+    (default:: <val> <body>))
+
+(switch:: <arg> . <cases>)
+
+(evcase <arg> exp env)
