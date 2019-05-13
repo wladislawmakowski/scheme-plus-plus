@@ -50,3 +50,18 @@
     (if (eq? (car exp) 'default::)
         (eval:: (cadr exp) env)
         'no))
+
+(define (evwh exp env)
+    (cond ((eq? (condition exp) 'true) (evwh exp env))
+          ((eq? (condition exp) 'false) (evwh exp env))
+          ((number? (condition exp)) (evwh exp env)))
+    (if (false? (condition exp))
+        '()
+        (begin (eval:: (statement exp) env)
+               (evwh exp env))))
+
+(define (condition exp)
+    (cadr exp))
+
+(define (statement exp)
+    (cddr exp))
