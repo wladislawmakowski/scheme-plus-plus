@@ -26,10 +26,14 @@
     (cadddr exp))
 
 (define (evsw exp env)
-    ())
+    (evsw_dis (sw-arg exp) (sw-cases exp) env))
 
-(define (evsw_dis exp env)              ; exp = (list <cases>)
-    ())
+(define (evsw_dis arg exp env)              ; exp = (list <cases>)
+    (if (null? (cdr exp))
+        '()
+        (if (eq? (evcase arg (car exp) env) 'no)
+            (evsw_dis arg (cdr exp) env)
+            '())))
 
 (define (sw-arg exp)
     (cadr exp))
