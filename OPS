@@ -6,3 +6,12 @@
 (switch:: <arg> . <cases>)
 
 (evcase <arg> exp env)
+
+(while:: <exp> . <body>)
+
+
+(cond:: (<predicate> <consequent>)
+        (<predicate> <consequent>)
+        (<predicate> <consequent>)
+        (<predicate> <consequent>)
+        (else <body>))
