@@ -1,4 +1,4 @@
 # scheme++ 
-(The metacircular scheme interpretor with Object-Oriented programming support)
+The metacircular scheme interpretor with Object-Oriented programming support
 # STATUS: NOT READY
 
