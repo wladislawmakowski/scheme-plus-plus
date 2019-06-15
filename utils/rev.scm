@@ -6,7 +6,7 @@
 (define (evcf exp env)
     (cond ((if? exp) (evif exp env))
           ((switch? exp) (evsw exp env))
-          ((cond? exp) (evcnd exp env))
+          ((cond? exp) (evcnd (cdr exp) env))
           ((for? exp) (evfr exp env))
           ((while? exp) (evwh exp env))
           (else (printf "ILLEGAL CONTROL FLOW OPERATOR: ~a" (car exp)))))
@@ -16,14 +16,14 @@
         (eval:: (consequent exp) env)
         (eval:: (alternative exp) env)))
 
-(define (predicate exp)
+(define (if_predicate exp)
     (cadr exp))
 
-(define (consequent exp)
+(define (if_consequent exp)
     (caddr exp))
 
-(define (alternative exp)
-    (cadddr exp))
+(define (if_alternative exp)
+    (cdddr exp))
 
 (define (evsw exp env)
     (evsw_dis (sw-arg exp) (sw-cases exp) env))
@@ -64,4 +64,19 @@
     (cadr exp))
 
 (define (statement exp)
-    (cddr exp))
+  (cddr exp))
+
+(define (evcnd exp env)
+  (if (true? (cnd_predicate exp))
+      (eval:: (cnd_consequent exp) env)
+      (if (eq? (cnd_predicate exp) 'else::)
+	  (eval:: (cnd_consequent exp) env)
+	  (evcnd (cdr exp) env))))
+
+(define (cnd_predicate exp)
+  (caar exp))
+
+(define (cnd_consequent exp)
+  (cdar exp))
+
+
