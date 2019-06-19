@@ -24,7 +24,7 @@
         #f))
 
 (define (class-definition? exp)
-    (if (eq? (car exp) 'define-class::)
+    (if (eq? (car exp) 'define_c::)
         #t
         #f))
 
@@ -66,10 +66,15 @@
           ((eq? (car exp) 'lambda::) #t)
           (else #f)))
 
-(define (begin? exp)
-    (if (eq? (car exp) 'begin::)
+(define (eval_s? exp)
+    (if (eq? (car exp) 'eval_s::)
         #t
         #f))
 
 (define (application? exp)
-    (pair? exp))
+  (pair? exp))
+
+(define (compound? exp)
+  (if (eq? (car exp) 'proc_xcmpd#1)
+      #t
+      #f))

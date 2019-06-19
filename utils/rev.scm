@@ -79,4 +79,14 @@
 (define (cnd_consequent exp)
   (cdar exp))
 
+(define (eval_s exp env)
+  (cond ((last_case? exp) (eval:: (frst_case exp) env))
+	(else (eval:: (frst_case exp) env)
+	      (eval_s (rst_case exp) env))))
+
+()
+  
+
+  
+
 

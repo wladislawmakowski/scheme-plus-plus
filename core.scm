@@ -20,10 +20,10 @@
          (make-proc (proc-params exp)
                     (proc-body exp)
                     env))
-        ((begin? exp)
-         (eval-seq exp env))
+        ((eval_s? exp)
+         (eval_s exp env))
         ((application? exp)
-         (apply (eval (operator exp) env)
+         (apply:: (eval (operator exp) env)
                 (eval (list-of-values (operands exp) env) env)))
         (else (printf "UNKNOWN EXPRESSION TYPE: "~a"" exp))))
 

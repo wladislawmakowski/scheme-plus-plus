@@ -15,3 +15,11 @@
         (<predicate> <consequent>)
         (<predicate> <consequent>)
         (else <body>))
+
+(eval_s:: . <cases>)
+
+(act:: exp)
+(ver:? arg)
+(set:! var)
+(sev:;)
+(const:*)
